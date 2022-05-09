@@ -17,7 +17,13 @@ export function signup(state={},action) {
                 return state
     }
 }
-export function login(state={},action) {
+
+const user = localStorage.getItem('user');
+const initialState = user ? { loggedIn: true, user } : {}
+
+export function login(state= initialState,action) {
+
+   
 
     switch (action.type) {
 
@@ -25,7 +31,8 @@ export function login(state={},action) {
 
             return {
 
-                Register: true
+                
+                Payload : action.Payload
 
             }
 
@@ -33,7 +40,9 @@ export function login(state={},action) {
 
             return {
 
+                loggedIn : true ,
 
+                Payload : action.Payload
 
             }
 
@@ -45,6 +54,13 @@ export function login(state={},action) {
 
 
 
+            }
+
+        case 'SignOut':
+
+            return{
+
+                
             }
 
             default:
